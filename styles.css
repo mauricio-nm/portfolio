@@ -1,5 +1,21 @@
+/*
+=============================================
+MÓDULO 2: TIPOGRAFÍA Y LEGIBILIDAD
+=============================================
+Proyecto final del Módulo 2
+BUILDS ON: Módulo 1 (Fundamentos CSS)
+NUEVO en este módulo:
+- Google Fonts (Inter, Playfair Display)
+- Propiedades tipográficas avanzadas
+- Control de texto mejorado
+- Espaciado y legibilidad optimizados
+- Jerarquía tipográfica clara
+NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
+=============================================
+*/
+
 /* ===========================================
-   1. RESET BÁSICO
+   1. RESET BÁSICO (del Módulo 1)
    =========================================== */
    * {
     margin: 0;
@@ -8,65 +24,102 @@
   }
   
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    /* MEJORADO: Ahora usando Google Fonts */
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
     font-size: 16px;
-    line-height: 1.6;
+    /* MEJORADO: Mejor line-height para legibilidad */
+    line-height: 1.7;
     color: #333333;
     background-color: #ffffff;
+    /* NUEVO: Antialiasing para mejor renderizado */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* NUEVO: Ajuste de texto más legible */
+    text-rendering: optimizeLegibility;
   }
   
   /* ===========================================
-       2. TIPOGRAFÍA GENERAL
+       2. TIPOGRAFÍA GENERAL - MEJORADA
        =========================================== */
   h1,
   h2,
   h3,
   h4 {
-    font-weight: bold;
+    /* MEJORADO: Fuente display para títulos */
+    font-family: "Lexend", sans-serif;
+    font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 16px;
     color: #1a1a1a;
+    /* NUEVO: Letter-spacing para títulos */
+    letter-spacing: -0.02em;
   }
   
   h1 {
-    font-size: 32px;
+    /* MEJORADO: Escala tipográfica más clara */
+    font-size: 3rem; /* 48px */
+    margin-bottom: 1.5rem;
+    font-weight: 900;
   }
   
   h2 {
-    font-size: 28px;
-    margin-top: 48px;
+    font-size: 2.25rem; /* 36px */
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
   }
   
   h3 {
-    font-size: 24px;
-    margin-top: 32px;
+    font-size: 1.75rem; /* 28px */
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
   }
   
   h4 {
-    font-size: 18px;
-    margin-top: 24px;
+    font-size: 1.25rem; /* 20px */
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
   }
   
   p {
-    margin-bottom: 16px;
+    margin-bottom: 1.25rem;
+    /* NUEVO: Límite de ancho para mejor legibilidad */
+    max-width: 100%;
   }
   
   strong {
-    font-weight: bold;
+    font-weight: 600;
     color: #000000;
   }
   
+  em {
+    font-style: italic;
+  }
+  
+  /* NUEVO: Párrafos introductorios más grandes */
+  .about__intro,
+  .hero__description {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.8;
+    color: #555555;
+  }
+  
   /* ===========================================
-       3. ENLACES
+       3. ENLACES - MEJORADO
        =========================================== */
   a {
     color: #f97316;
     text-decoration: none;
+    /* NUEVO: Transición suave (sin animación completa aún) */
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
   }
   
   a:hover {
     color: #ea580c;
     text-decoration: underline;
+    text-decoration-thickness: 2px;
   }
   
   a:active {
@@ -81,7 +134,7 @@
   }
   
   /* ===========================================
-       5. HEADER
+       5. HEADER - TIPOGRAFÍA MEJORADA
        =========================================== */
   .header {
     background-color: #fff7ed;
@@ -103,15 +156,24 @@
   .header__name {
     color: #1a1a1a;
     margin-bottom: 8px;
+    /* MEJORADO: Usando Playfair Display */
+    font-family: "Lexend", sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.03em;
   }
   
   .header__tagline {
     color: #666666;
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
+    margin: 0 auto;
+    /* NUEVO: Espaciado de letras para subtítulos */
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
   }
   
   /* ===========================================
-       6. NAVEGACIÓN
+       6. NAVEGACIÓN - TIPOGRAFÍA MEJORADA
        =========================================== */
   .nav {
     text-align: center;
@@ -131,6 +193,9 @@
     display: inline-block;
     color: #333333;
     font-weight: 500;
+    /* NUEVO: Mejor espaciado */
+    font-size: 0.9375rem; /* 15px */
+    letter-spacing: 0.01em;
   }
   
   .nav__link:hover {
@@ -140,7 +205,7 @@
   
   .nav__link--active {
     color: #f97316;
-    font-weight: bold;
+    font-weight: 600;
   }
   
   /* ===========================================
@@ -153,7 +218,7 @@
   }
   
   /* ===========================================
-       8. HERO SECTION
+       8. HERO SECTION - TIPOGRAFÍA MEJORADA
        =========================================== */
   .hero {
     padding: 64px 0;
@@ -169,29 +234,36 @@
   }
   
   .hero__title {
-    font-size: 48px;
+    font-size: 3.5rem; /* 56px */
     color: #1a1a1a;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
+    /* MEJORADO: Mejor peso y espaciado */
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
   }
   
   .hero__subtitle {
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px */
     color: #f97316;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+    font-family: "Inter", sans-serif;
     font-weight: 600;
+    letter-spacing: -0.01em;
   }
   
   .hero__description {
-    font-size: 18px;
+    font-size: 1.125rem; /* 18px */
     color: #666666;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.8;
   }
   
   .hero__actions {
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
   
   .hero__stats {
@@ -206,30 +278,38 @@
   
   .stat__number {
     display: block;
-    font-size: 32px;
-    font-weight: bold;
+    font-size: 2.5rem; /* 40px */
+    font-weight: 700;
     color: #f97316;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
+    font-family: "Playfair Display", serif;
+    letter-spacing: -0.02em;
   }
   
   .stat__label {
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px */
     color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
   }
   
   /* ===========================================
-       9. BOTONES
+       9. BOTONES - TIPOGRAFÍA MEJORADA
        =========================================== */
   .button {
     display: inline-block;
     padding: 12px 24px;
     margin: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
     text-align: center;
     border: 2px solid transparent;
     cursor: pointer;
     text-decoration: none;
+    /* NUEVO: Mejor tipografía en botones */
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.02em;
   }
   
   .button--primary {
@@ -257,11 +337,11 @@
   
   .button--large {
     padding: 16px 32px;
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   
   /* ===========================================
-       10. ABOUT SECTION
+       10. ABOUT SECTION - TIPOGRAFÍA MEJORADA
        =========================================== */
   .about {
     padding: 48px 0;
@@ -275,55 +355,65 @@
   .about__title {
     text-align: center;
     color: #1a1a1a;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
   
   .about__intro {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
     text-align: center;
     color: #333333;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    font-weight: 400;
   }
   
   .about__text {
     color: #666666;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
   }
   
   /* ===========================================
-       11. QUOTE
+       11. QUOTE - TIPOGRAFÍA MEJORADA
        =========================================== */
   .quote {
     background-color: #fff7ed;
-    padding: 24px;
-    margin: 32px 0;
+    padding: 2rem;
+    margin: 2.5rem 0;
     border-left: 4px solid #f97316;
   }
   
   .quote__text {
-    font-size: 18px;
+    font-size: 1.25rem; /* 20px */
     font-style: italic;
     color: #333333;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    /* NUEVO: Mejor tipografía para citas */
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
   }
   
   .quote__author {
     color: #666666;
-    font-size: 14px;
+    font-size: 0.875rem;
     display: block;
     text-align: right;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
   }
   
   /* ===========================================
-       12. VALUES
+       12. VALUES - TIPOGRAFÍA MEJORADA
        =========================================== */
   .values {
-    margin-top: 48px;
+    margin-top: 3rem;
   }
   
   .values__title {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
   
   .values__list {
@@ -331,10 +421,11 @@
   }
   
   .values__item {
-    padding: 16px;
-    margin-bottom: 16px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
     background-color: #fff7ed;
     border: 1px solid #fed7aa;
+    line-height: 1.6;
   }
   
   .values__item:hover {
@@ -343,16 +434,19 @@
   }
   
   .values__icon {
-    font-size: 24px;
-    margin-right: 12px;
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
   }
   
   .values__item strong {
-    margin-right: 8px;
+    margin-right: 0.5rem;
+    font-weight: 600;
+    font-size: 1.0625rem;
   }
   
   .values__item span {
     color: #666666;
+    font-size: 0.9375rem;
   }
   
   /* ===========================================
@@ -370,16 +464,18 @@
   
   .projects__title {
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
   
   .projects__description {
     text-align: center;
     color: #666666;
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.0625rem;
+    line-height: 1.7;
   }
   
   .projects__grid {
@@ -387,12 +483,12 @@
   }
   
   /* ===========================================
-       14. PROJECT CARD
+       14. PROJECT CARD - TIPOGRAFÍA MEJORADA
        =========================================== */
   .project {
     background-color: #ffffff;
-    padding: 32px;
-    margin-bottom: 32px;
+    padding: 2rem;
+    margin-bottom: 2rem;
     border: 1px solid #fed7aa;
   }
   
@@ -408,54 +504,61 @@
   .project__badge {
     background-color: #f97316;
     color: #ffffff;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: bold;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: uppercase;
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
   }
   
   .project__title {
     color: #1a1a1a;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
   }
   
   .project__description {
     color: #666666;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
   }
   
   .project__subtitle {
-    font-size: 16px;
+    font-size: 1.0625rem;
     color: #333333;
-    margin-top: 24px;
-    margin-bottom: 12px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
   }
   
   .project__learnings {
     list-style: disc;
-    padding-left: 24px;
-    margin-bottom: 24px;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
   }
   
   .project__learnings li {
     color: #666666;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
   }
   
   .project__technologies {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
   
   .tag {
     display: inline-block;
     background-color: #ffedd5;
     color: #c2410c;
-    padding: 4px 12px;
-    margin-right: 8px;
-    font-size: 14px;
+    padding: 0.25rem 0.75rem;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
     font-weight: 600;
+    letter-spacing: 0.025em;
   }
   
   .project__links {
@@ -464,12 +567,13 @@
   
   .project__link {
     display: inline-block;
-    margin-right: 16px;
+    margin-right: 1rem;
     font-weight: 600;
+    font-size: 0.9375rem;
   }
   
   /* ===========================================
-       15. SKILLS SECTION
+       15. SKILLS SECTION - TIPOGRAFÍA MEJORADA
        =========================================== */
   .skills {
     padding: 64px 0;
@@ -482,33 +586,37 @@
   
   .skills__title {
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
   
   .skills__subtitle {
     text-align: center;
     color: #666666;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
+    font-size: 1.0625rem;
+    font-weight: 400;
   }
   
   .skills__list {
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
   
   .skill {
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
   
   .skill__name {
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     color: #1a1a1a;
+    font-size: 1.0625rem;
+    font-weight: 600;
   }
   
   .skill__bar {
     background-color: #e0e0e0;
     height: 24px;
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
   }
   
   .skill__progress {
@@ -533,34 +641,37 @@
   
   .skill__percentage {
     color: #666666;
-    font-size: 14px;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
   
   /* ===========================================
-       16. LEARNING
+       16. LEARNING - TIPOGRAFÍA MEJORADA
        =========================================== */
   .learning {
     background-color: #fff7ed;
-    padding: 24px;
+    padding: 1.5rem;
   }
   
   .learning__title {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
     color: #1a1a1a;
+    font-size: 1.25rem;
   }
   
   .learning__list {
     list-style: disc;
-    padding-left: 24px;
+    padding-left: 1.5rem;
   }
   
   .learning__item {
     color: #666666;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
   }
   
   /* ===========================================
-       17. CONTACT SECTION
+       17. CONTACT SECTION - TIPOGRAFÍA MEJORADA
        =========================================== */
   .contact {
     padding: 64px 0;
@@ -574,40 +685,44 @@
   }
   
   .contact__title {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
   
   .contact__description {
     color: #666666;
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.0625rem;
+    line-height: 1.7;
   }
   
   .contact__methods {
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
   
   .contact__method {
     display: inline-block;
-    margin: 0 32px 32px;
+    margin: 0 2rem 2rem;
     text-align: center;
   }
   
   .contact__method-title {
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
     color: #1a1a1a;
+    font-weight: 600;
   }
   
   .contact__link {
     color: #f97316;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 0.9375rem;
   }
   
   /* ===========================================
-       18. FOOTER
+       18. FOOTER - TIPOGRAFÍA MEJORADA
        =========================================== */
   .footer {
     background-color: #1a1a1a;
@@ -623,13 +738,15 @@
   }
   
   .footer__nav {
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
   
   .footer__link {
     color: #ffffff;
-    margin: 0 16px;
+    margin: 0 1rem;
     display: inline-block;
+    font-size: 0.9375rem;
+    font-weight: 400;
   }
   
   .footer__link:hover {
@@ -639,11 +756,13 @@
   
   .footer__copyright {
     color: #9ca3af;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
   }
   
   .footer__credits {
     color: #9ca3af;
-    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
   
