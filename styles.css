@@ -158,9 +158,12 @@
        5. HEADER - TIPOGRAFÍA MEJORADA
        =========================================== */
   .header {
-    background-color: var(--color-bg-light);
+    /* GRADIENTE: Transición suave de color beige claro a más claro (dirección diagonal 135deg) */
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-bg-lighter) 100%);
     border-bottom: 1px solid var(--color-border-light);
     padding: 24px 0;
+    /* SOMBRA: Sombra sutil hacia abajo (0px horizontal, 2px vertical, 8px difuminado, color naranja con 8% opacidad) */
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.08);
   }
   
   .header__container {
@@ -244,14 +247,31 @@
   .hero {
     padding: 64px 0;
     text-align: center;
-    background-color: var(--color-bg-lighter);
+    /* GRADIENTE LINEAL: Tres colores creando una transición suave (0% → 50% → 100%) */
+    background: linear-gradient(135deg, var(--color-bg-lighter) 0%, #fff3e0 50%, var(--color-bg-light) 100%);
     margin-bottom: 48px;
+    position: relative; /* Necesario para posicionar el ::before */
+  }
+  
+  /* PSEUDOELEMENTO ::before: Crea una capa adicional sobre el hero */
+  .hero::before {
+    content: ''; /* Obligatorio para que el pseudoelemento exista */
+    position: absolute; /* Se posiciona sobre el hero */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* GRADIENTE RADIAL: Crea un efecto de "luz" circular desde el punto 30% horizontal, 50% vertical */
+    background: radial-gradient(circle at 30% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+    pointer-events: none; /* Permite hacer clic a través de esta capa */
   }
   
   .hero__container {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté sobre el ::before */
   }
   
   .hero__title {
@@ -287,32 +307,60 @@
     margin-bottom: 3rem;
   }
   
+  /* FLEXBOX: Sistema de layout flexible para alinear elementos */
   .hero__stats {
+    display: flex; /* Activa flexbox */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    gap: 1.5rem; /* Espacio uniforme entre elementos (mejor que margin) */
     text-align: center;
   }
   
   .stat {
-    display: inline-block;
-    margin: 0 32px;
+    display: flex; /* Activa flexbox en cada stat */
+    flex-direction: column; /* Apila el número y el texto verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente dentro del stat */
+    justify-content: center; /* Centra el contenido verticalmente */
     text-align: center;
+    padding: 1rem 1.5rem;
+    /* GRADIENTE: Fondo blanco semitransparente que se vuelve más transparente */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    border-radius: 12px; /* Bordes redondeados (esquinas circulares) */
+    /* SOMBRA: Sombra hacia abajo con color naranja semitransparente */
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+    transition: all 0.3s ease; /* Transición suave para todos los cambios (hover, etc.) */
+    min-width: 140px; /* Ancho mínimo para mantener consistencia */
+  }
+  
+  /* HOVER: Efecto cuando pasas el mouse sobre el stat */
+  .stat:hover {
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.25); /* Sombra más grande y visible */
+    transform: translateY(-4px); /* Mueve el elemento 4px hacia arriba (efecto "levitación") */
   }
   
   .stat__number {
     display: block;
     font-size: 2.5rem; /* 40px */
     font-weight: 700;
-    color: var(--color-primary);
+    /* GRADIENTE EN TEXTO: Aplica un gradiente al texto (técnica avanzada) */
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    -webkit-background-clip: text; /* Recorta el fondo al área del texto (soporte WebKit) */
+    -webkit-text-fill-color: transparent; /* Hace el texto transparente para ver el gradiente */
+    background-clip: text; /* Recorta el fondo al área del texto (estándar) */
     margin-bottom: 0.5rem;
     font-family: "Playfair Display", serif;
     letter-spacing: -0.02em;
   }
   
   .stat__label {
+    display: block;
     font-size: 0.875rem; /* 14px */
     color: var(--color-text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
+    text-align: center;
   }
   
   /* ===========================================
@@ -331,29 +379,45 @@
     /* NUEVO: Mejor tipografía en botones */
     font-family: "Inter", sans-serif;
     letter-spacing: 0.02em;
+    border-radius: 12px; /* Bordes redondeados para esquinas circulares */
   }
   
   .button--primary {
-    background-color: var(--color-primary);
+    /* GRADIENTE: Transición de naranja a naranja oscuro */
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
     color: var(--color-text-white);
     border-color: var(--color-primary);
+    /* SOMBRA: Sombra visible hacia abajo con color naranja (30% opacidad) */
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    transition: all 0.3s ease; /* Transición suave de 0.3 segundos para todos los cambios */
   }
   
+  /* HOVER: Estado cuando el mouse está sobre el botón */
   .button--primary:hover {
-    background-color: var(--color-primary-hover);
+    /* GRADIENTE: Cambia a colores más oscuros en hover */
+    background: linear-gradient(135deg, var(--color-primary-hover) 0%, var(--color-primary-active) 100%);
     border-color: var(--color-primary-hover);
     text-decoration: none;
+    box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4); /* Sombra más grande y visible */
+    transform: translateY(-2px); /* Mueve el botón 2px hacia arriba (efecto "clickeable") */
   }
   
   .button--secondary {
-    background-color: var(--color-bg-white);
+    /* GRADIENTE: Transición de blanco a beige claro */
+    background: linear-gradient(135deg, var(--color-bg-white) 0%, var(--color-bg-light) 100%);
     color: var(--color-primary);
     border-color: var(--color-primary);
+    /* SOMBRA: Sombra más sutil que el botón primary */
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.15);
+    transition: all 0.3s ease;
   }
   
   .button--secondary:hover {
-    background-color: var(--color-bg-light);
+    /* GRADIENTE: Cambia a colores más claros en hover */
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-bg-lighter) 100%);
     text-decoration: none;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25); /* Sombra más visible */
+    transform: translateY(-2px); /* Efecto de "levitación" */
   }
   
   .button--large {
@@ -398,10 +462,14 @@
        11. QUOTE - TIPOGRAFÍA MEJORADA
        =========================================== */
   .quote {
-    background-color: var(--color-bg-light);
+    /* GRADIENTE: Fondo con transición de beige claro a más claro */
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-bg-lighter) 100%);
     padding: 2rem;
     margin: 2.5rem 0;
     border-left: 4px solid var(--color-primary);
+    /* SOMBRA: Sombra sutil hacia abajo (color negro con 8% opacidad) */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 4px; /* Bordes ligeramente redondeados */
   }
   
   .quote__text {
@@ -444,14 +512,23 @@
   .values__item {
     padding: 1.25rem;
     margin-bottom: 1rem;
-    background-color: var(--color-bg-light);
+    /* GRADIENTE: Transición de blanco a beige claro */
+    background: linear-gradient(135deg, var(--color-bg-white) 0%, var(--color-bg-light) 100%);
     border: 1px solid var(--color-border-light);
     line-height: 1.6;
+    /* SOMBRA: Sombra muy sutil para dar profundidad */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-radius: 4px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave para efectos hover */
   }
   
+  /* HOVER: Efecto interactivo cuando pasas el mouse */
   .values__item:hover {
-    background-color: var(--color-bg-lighter);
-    border-color: var(--color-primary);
+    /* GRADIENTE: Cambia a colores más claros */
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-bg-lighter) 100%);
+    border-color: var(--color-primary); /* Borde cambia a naranja */
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15); /* Sombra más visible con color naranja */
+    transform: translateY(-2px); /* Se "levanta" 2px */
   }
   
   .values__icon {
@@ -475,7 +552,8 @@
        =========================================== */
   .projects {
     padding: 64px 0;
-    background-color: var(--color-bg-light);
+    /* GRADIENTE VERTICAL: Transición de arriba hacia abajo (180deg) con tres colores */
+    background: linear-gradient(180deg, var(--color-bg-white) 0%, var(--color-bg-light) 50%, var(--color-bg-lighter) 100%);
   }
   
   .projects__container {
@@ -507,23 +585,42 @@
        14. PROJECT CARD - TIPOGRAFÍA MEJORADA
        =========================================== */
   .project {
-    background-color: var(--color-bg-white);
+    /* GRADIENTE: Fondo sutil de blanco a beige muy claro */
+    background: linear-gradient(135deg, var(--color-bg-white) 0%, #fffaf5 100%);
     padding: 2rem;
     margin-bottom: 2rem;
     border: 1px solid var(--color-border-light);
+    /* SOMBRA: Sombra suave que da profundidad a la tarjeta */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 8px; /* Bordes redondeados moderados */
+    transition: all 0.3s ease; /* Transición suave para efectos hover */
   }
   
+  /* HOVER: Efecto cuando pasas el mouse sobre la tarjeta de proyecto */
   .project:hover {
-    border-color: var(--color-primary);
+    border-color: var(--color-primary); /* Borde cambia a naranja */
+    /* SOMBRA: Sombra más grande y visible con color naranja */
+    box-shadow: 0 8px 24px rgba(249, 115, 22, 0.2);
+    transform: translateY(-4px); /* La tarjeta se "levanta" 4px (efecto 3D) */
   }
   
   .project--featured {
     border: 2px solid var(--color-primary);
     position: relative;
+    /* GRADIENTE: Fondo más visible para el proyecto destacado */
+    background: linear-gradient(135deg, #fffaf5 0%, var(--color-bg-lighter) 100%);
+    /* SOMBRA: Sombra más prominente para destacar */
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.25);
+  }
+  
+  /* HOVER: Efecto aún más pronunciado para el proyecto destacado */
+  .project--featured:hover {
+    box-shadow: 0 10px 32px rgba(249, 115, 22, 0.35); /* Sombra muy visible */
   }
   
   .project__badge {
-    background-color: var(--color-primary);
+    /* GRADIENTE: Badge con gradiente naranja para destacar */
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
     color: var(--color-text-white);
     padding: 0.25rem 0.75rem;
     font-size: 0.75rem;
@@ -532,6 +629,9 @@
     display: inline-block;
     margin-bottom: 1rem;
     letter-spacing: 0.1em;
+    /* SOMBRA: Sombra pequeña pero visible para dar profundidad al badge */
+    box-shadow: 0 2px 6px rgba(249, 115, 22, 0.3);
+    border-radius: 4px; /* Bordes redondeados */
   }
   
   .project__title {
@@ -573,13 +673,17 @@
   
   .tag {
     display: inline-block;
-    background-color: var(--color-tag-bg);
+    /* GRADIENTE: Fondo de beige claro a naranja muy claro */
+    background: linear-gradient(135deg, var(--color-tag-bg) 0%, #ffe4cc 100%);
     color: var(--color-tag-text);
     padding: 0.25rem 0.75rem;
     margin-right: 0.5rem;
     font-size: 0.875rem;
     font-weight: 600;
     letter-spacing: 0.025em;
+    /* SOMBRA: Sombra muy pequeña para darle profundidad al tag */
+    box-shadow: 0 1px 3px rgba(194, 65, 12, 0.2);
+    border-radius: 4px; /* Bordes redondeados */
   }
   
   .project__links {
@@ -634,18 +738,27 @@
   }
   
   .skill__bar {
-    background-color: var(--color-border-gray);
+    /* GRADIENTE: Fondo de la barra (gris claro a más claro) */
+    background: linear-gradient(135deg, var(--color-border-gray) 0%, #f0f0f0 100%);
     height: 24px;
-    position: relative;
+    position: relative; /* Necesario para posicionar el .skill__progress */
     margin-bottom: 0.5rem;
+    border-radius: 12px; /* Bordes completamente redondeados (círculo) */
+    /* SOMBRA INTERNA (inset): Crea efecto de profundidad "hacia adentro" */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Oculta el contenido que se salga (importante para border-radius) */
   }
   
   .skill__progress {
-    background-color: var(--color-primary);
+    /* GRADIENTE: Barra de progreso con gradiente naranja */
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
     height: 100%;
-    position: absolute;
+    position: absolute; /* Se posiciona sobre el .skill__bar */
     top: 0;
     left: 0;
+    /* SOMBRA: Sombra externa para que la barra de progreso "resalte" */
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.4);
+    border-radius: 12px; /* Bordes redondeados igual que el contenedor */
   }
   
   .skill__progress--html {
@@ -670,8 +783,12 @@
        16. LEARNING - TIPOGRAFÍA MEJORADA
        =========================================== */
   .learning {
-    background-color: var(--color-bg-light);
+    /* GRADIENTE: Fondo con transición de beige claro a más claro */
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-bg-lighter) 100%);
     padding: 1.5rem;
+    border-radius: 8px; /* Bordes redondeados */
+    /* SOMBRA: Sombra suave para dar profundidad a la sección */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
   
   .learning__title {
@@ -696,13 +813,30 @@
        =========================================== */
   .contact {
     padding: 64px 0;
-    background-color: var(--color-bg-lighter);
+    /* GRADIENTE LINEAL: Tres colores creando una transición suave */
+    background: linear-gradient(135deg, var(--color-bg-lighter) 0%, #fff3e0 50%, var(--color-bg-light) 100%);
+    position: relative; /* Necesario para posicionar el ::before */
+  }
+  
+  /* PSEUDOELEMENTO ::before: Crea una capa de efecto visual sobre el fondo */
+  .contact::before {
+    content: ''; /* Obligatorio para que el pseudoelemento exista */
+    position: absolute; /* Se posiciona sobre el .contact */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* GRADIENTE RADIAL: Efecto de "luz" circular desde el punto 70% horizontal, 50% vertical */
+    background: radial-gradient(circle at 70% 50%, rgba(249, 115, 22, 0.08) 0%, transparent 50%);
+    pointer-events: none; /* Permite hacer clic a través de esta capa */
   }
   
   .contact__container {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 1; /* Asegura que el contenido esté sobre el ::before */
   }
   
   .contact__title {
@@ -727,6 +861,20 @@
     display: inline-block;
     margin: 0 2rem 2rem;
     text-align: center;
+    padding: 1.5rem;
+    /* GRADIENTE: Fondo de blanco a beige claro */
+    background: linear-gradient(135deg, var(--color-bg-white) 0%, var(--color-bg-light) 100%);
+    border-radius: 8px; /* Bordes redondeados */
+    /* SOMBRA: Sombra suave para dar profundidad */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease; /* Transición suave para efectos hover */
+  }
+  
+  /* HOVER: Efecto cuando pasas el mouse sobre el método de contacto */
+  .contact__method:hover {
+    /* SOMBRA: Sombra más grande y visible con color naranja */
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.2);
+    transform: translateY(-4px); /* Se "levanta" 4px (efecto 3D) */
   }
   
   .contact__method-title {
@@ -746,10 +894,13 @@
        18. FOOTER - TIPOGRAFÍA MEJORADA
        =========================================== */
   .footer {
-    background-color: var(--color-footer-bg);
+    /* GRADIENTE: Fondo oscuro con transición de gris oscuro a negro */
+    background: linear-gradient(135deg, var(--color-footer-bg) 0%, #0f0f0f 100%);
     color: var(--color-text-white);
     padding: 48px 0;
     text-align: center;
+    /* SOMBRA NEGATIVA: Sombra hacia arriba (valor negativo en Y) para efecto de elevación */
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
   }
   
   .footer__container {
