@@ -1,18 +1,39 @@
-/*
-=============================================
-MÓDULO 2: TIPOGRAFÍA Y LEGIBILIDAD
-=============================================
-Proyecto final del Módulo 2
-BUILDS ON: Módulo 1 (Fundamentos CSS)
-NUEVO en este módulo:
-- Google Fonts (Inter, Playfair Display)
-- Propiedades tipográficas avanzadas
-- Control de texto mejorado
-- Espaciado y legibilidad optimizados
-- Jerarquía tipográfica clara
-NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
-=============================================
-*/
+
+/* ===========================================
+   CSS VARIABLES - COLOR PALETTE
+   =========================================== */
+:root {
+  /* Primary Colors */
+  --color-primary: #f97316;
+  --color-primary-hover: #ea580c;
+  --color-primary-active: #c2410c;
+  
+  /* Background Colors */
+  --color-bg-white: #ffffff;
+  --color-bg-light: #fff7ed;
+  --color-bg-lighter: #ffedd5;
+  
+  /* Text Colors */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #666666;
+  --color-text-quaternary: #555555;
+  --color-text-black: #000000;
+  --color-text-white: #ffffff;
+  
+  /* Border Colors */
+  --color-border-light: #fed7aa;
+  --color-border-gray: #e0e0e0;
+  
+  /* Footer Colors */
+  --color-footer-bg: #1a1a1a;
+  --color-footer-link-hover: #fdba74;
+  --color-footer-text: #9ca3af;
+  
+  /* Tag Colors */
+  --color-tag-bg: #ffedd5;
+  --color-tag-text: #c2410c;
+}
 
 /* ===========================================
    1. RESET BÁSICO (del Módulo 1)
@@ -29,8 +50,8 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
     font-size: 16px;
     /* MEJORADO: Mejor line-height para legibilidad */
     line-height: 1.7;
-    color: #333333;
-    background-color: #ffffff;
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-white);
     /* NUEVO: Antialiasing para mejor renderizado */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -49,7 +70,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
     font-family: "Lexend", sans-serif;
     font-weight: 700;
     line-height: 1.2;
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     /* NUEVO: Letter-spacing para títulos */
     letter-spacing: -0.02em;
   }
@@ -90,7 +111,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   strong {
     font-weight: 600;
-    color: #000000;
+    color: var(--color-text-black);
   }
   
   em {
@@ -102,14 +123,14 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   .hero__description {
     font-size: 1.125rem; /* 18px */
     line-height: 1.8;
-    color: #555555;
+    color: var(--color-text-quaternary);
   }
   
   /* ===========================================
        3. ENLACES - MEJORADO
        =========================================== */
   a {
-    color: #f97316;
+    color: var(--color-primary);
     text-decoration: none;
     /* NUEVO: Transición suave (sin animación completa aún) */
     text-decoration-thickness: 2px;
@@ -117,13 +138,13 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   a:hover {
-    color: #ea580c;
+    color: var(--color-primary-hover);
     text-decoration: underline;
     text-decoration-thickness: 2px;
   }
   
   a:active {
-    color: #c2410c;
+    color: var(--color-primary-active);
   }
   
   /* ===========================================
@@ -137,8 +158,8 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
        5. HEADER - TIPOGRAFÍA MEJORADA
        =========================================== */
   .header {
-    background-color: #fff7ed;
-    border-bottom: 1px solid #fed7aa;
+    background-color: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-border-light);
     padding: 24px 0;
   }
   
@@ -154,7 +175,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .header__name {
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     margin-bottom: 8px;
     /* MEJORADO: Usando Playfair Display */
     font-family: "Lexend", sans-serif;
@@ -163,7 +184,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .header__tagline {
-    color: #666666;
+    color: var(--color-text-tertiary);
     font-size: 0.875rem; /* 14px */
     margin: 0 auto;
     /* NUEVO: Espaciado de letras para subtítulos */
@@ -191,7 +212,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   .nav__link {
     padding: 8px 12px;
     display: inline-block;
-    color: #333333;
+    color: var(--color-text-secondary);
     font-weight: 500;
     /* NUEVO: Mejor espaciado */
     font-size: 0.9375rem; /* 15px */
@@ -199,12 +220,12 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .nav__link:hover {
-    color: #f97316;
+    color: var(--color-primary);
     text-decoration: none;
   }
   
   .nav__link--active {
-    color: #f97316;
+    color: var(--color-primary);
     font-weight: 600;
   }
   
@@ -223,7 +244,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   .hero {
     padding: 64px 0;
     text-align: center;
-    background-color: #ffedd5;
+    background-color: var(--color-bg-lighter);
     margin-bottom: 48px;
   }
   
@@ -235,7 +256,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .hero__title {
     font-size: 3.5rem; /* 56px */
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     margin-bottom: 1rem;
     /* MEJORADO: Mejor peso y espaciado */
     font-weight: 900;
@@ -245,7 +266,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .hero__subtitle {
     font-size: 1.5rem; /* 24px */
-    color: #f97316;
+    color: var(--color-primary);
     margin-bottom: 1.5rem;
     font-family: "Inter", sans-serif;
     font-weight: 600;
@@ -254,7 +275,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .hero__description {
     font-size: 1.125rem; /* 18px */
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
@@ -280,7 +301,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
     display: block;
     font-size: 2.5rem; /* 40px */
     font-weight: 700;
-    color: #f97316;
+    color: var(--color-primary);
     margin-bottom: 0.5rem;
     font-family: "Playfair Display", serif;
     letter-spacing: -0.02em;
@@ -288,7 +309,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .stat__label {
     font-size: 0.875rem; /* 14px */
-    color: #666666;
+    color: var(--color-text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
@@ -313,25 +334,25 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .button--primary {
-    background-color: #f97316;
-    color: #ffffff;
-    border-color: #f97316;
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    border-color: var(--color-primary);
   }
   
   .button--primary:hover {
-    background-color: #ea580c;
-    border-color: #ea580c;
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
     text-decoration: none;
   }
   
   .button--secondary {
-    background-color: #ffffff;
-    color: #f97316;
-    border-color: #f97316;
+    background-color: var(--color-bg-white);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
   }
   
   .button--secondary:hover {
-    background-color: #fff7ed;
+    background-color: var(--color-bg-light);
     text-decoration: none;
   }
   
@@ -354,21 +375,21 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .about__title {
     text-align: center;
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     margin-bottom: 2rem;
   }
   
   .about__intro {
     font-size: 1.25rem; /* 20px */
     text-align: center;
-    color: #333333;
+    color: var(--color-text-secondary);
     margin-bottom: 1.5rem;
     line-height: 1.7;
     font-weight: 400;
   }
   
   .about__text {
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 2rem;
     line-height: 1.8;
   }
@@ -377,16 +398,16 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
        11. QUOTE - TIPOGRAFÍA MEJORADA
        =========================================== */
   .quote {
-    background-color: #fff7ed;
+    background-color: var(--color-bg-light);
     padding: 2rem;
     margin: 2.5rem 0;
-    border-left: 4px solid #f97316;
+    border-left: 4px solid var(--color-primary);
   }
   
   .quote__text {
     font-size: 1.25rem; /* 20px */
     font-style: italic;
-    color: #333333;
+    color: var(--color-text-secondary);
     margin-bottom: 1rem;
     line-height: 1.7;
     /* NUEVO: Mejor tipografía para citas */
@@ -395,7 +416,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .quote__author {
-    color: #666666;
+    color: var(--color-text-tertiary);
     font-size: 0.875rem;
     display: block;
     text-align: right;
@@ -423,14 +444,14 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   .values__item {
     padding: 1.25rem;
     margin-bottom: 1rem;
-    background-color: #fff7ed;
-    border: 1px solid #fed7aa;
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border-light);
     line-height: 1.6;
   }
   
   .values__item:hover {
-    background-color: #ffedd5;
-    border-color: #f97316;
+    background-color: var(--color-bg-lighter);
+    border-color: var(--color-primary);
   }
   
   .values__icon {
@@ -445,7 +466,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .values__item span {
-    color: #666666;
+    color: var(--color-text-tertiary);
     font-size: 0.9375rem;
   }
   
@@ -454,7 +475,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
        =========================================== */
   .projects {
     padding: 64px 0;
-    background-color: #fff7ed;
+    background-color: var(--color-bg-light);
   }
   
   .projects__container {
@@ -469,7 +490,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .projects__description {
     text-align: center;
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 3rem;
     max-width: 600px;
     margin-left: auto;
@@ -486,24 +507,24 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
        14. PROJECT CARD - TIPOGRAFÍA MEJORADA
        =========================================== */
   .project {
-    background-color: #ffffff;
+    background-color: var(--color-bg-white);
     padding: 2rem;
     margin-bottom: 2rem;
-    border: 1px solid #fed7aa;
+    border: 1px solid var(--color-border-light);
   }
   
   .project:hover {
-    border-color: #f97316;
+    border-color: var(--color-primary);
   }
   
   .project--featured {
-    border: 2px solid #f97316;
+    border: 2px solid var(--color-primary);
     position: relative;
   }
   
   .project__badge {
-    background-color: #f97316;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
     padding: 0.25rem 0.75rem;
     font-size: 0.75rem;
     font-weight: 600;
@@ -514,20 +535,20 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .project__title {
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     margin-bottom: 1rem;
     font-family: "Playfair Display", serif;
   }
   
   .project__description {
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 1.5rem;
     line-height: 1.7;
   }
   
   .project__subtitle {
     font-size: 1.0625rem;
-    color: #333333;
+    color: var(--color-text-secondary);
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
     font-weight: 600;
@@ -541,7 +562,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .project__learnings li {
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 0.5rem;
     line-height: 1.6;
   }
@@ -552,8 +573,8 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .tag {
     display: inline-block;
-    background-color: #ffedd5;
-    color: #c2410c;
+    background-color: var(--color-tag-bg);
+    color: var(--color-tag-text);
     padding: 0.25rem 0.75rem;
     margin-right: 0.5rem;
     font-size: 0.875rem;
@@ -591,7 +612,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .skills__subtitle {
     text-align: center;
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 2rem;
     font-size: 1.0625rem;
     font-weight: 400;
@@ -607,20 +628,20 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   
   .skill__name {
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     font-size: 1.0625rem;
     font-weight: 600;
   }
   
   .skill__bar {
-    background-color: #e0e0e0;
+    background-color: var(--color-border-gray);
     height: 24px;
     position: relative;
     margin-bottom: 0.5rem;
   }
   
   .skill__progress {
-    background-color: #f97316;
+    background-color: var(--color-primary);
     height: 100%;
     position: absolute;
     top: 0;
@@ -640,7 +661,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .skill__percentage {
-    color: #666666;
+    color: var(--color-text-tertiary);
     font-size: 0.875rem;
     font-weight: 500;
   }
@@ -649,13 +670,13 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
        16. LEARNING - TIPOGRAFÍA MEJORADA
        =========================================== */
   .learning {
-    background-color: #fff7ed;
+    background-color: var(--color-bg-light);
     padding: 1.5rem;
   }
   
   .learning__title {
     margin-bottom: 1rem;
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     font-size: 1.25rem;
   }
   
@@ -665,7 +686,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .learning__item {
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 0.5rem;
     line-height: 1.6;
   }
@@ -675,7 +696,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
        =========================================== */
   .contact {
     padding: 64px 0;
-    background-color: #ffedd5;
+    background-color: var(--color-bg-lighter);
   }
   
   .contact__container {
@@ -689,7 +710,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .contact__description {
-    color: #666666;
+    color: var(--color-text-tertiary);
     margin-bottom: 3rem;
     max-width: 600px;
     margin-left: auto;
@@ -711,12 +732,12 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   .contact__method-title {
     font-size: 1.125rem;
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: var(--color-text-primary);
     font-weight: 600;
   }
   
   .contact__link {
-    color: #f97316;
+    color: var(--color-primary);
     font-weight: 500;
     font-size: 0.9375rem;
   }
@@ -725,8 +746,8 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
        18. FOOTER - TIPOGRAFÍA MEJORADA
        =========================================== */
   .footer {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background-color: var(--color-footer-bg);
+    color: var(--color-text-white);
     padding: 48px 0;
     text-align: center;
   }
@@ -742,7 +763,7 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .footer__link {
-    color: #ffffff;
+    color: var(--color-text-white);
     margin: 0 1rem;
     display: inline-block;
     font-size: 0.9375rem;
@@ -750,18 +771,18 @@ NO usamos aún: Variables CSS, Flexbox, Grid, Sombras, Degradados
   }
   
   .footer__link:hover {
-    color: #fdba74;
+    color: var(--color-footer-link-hover);
     text-decoration: none;
   }
   
   .footer__copyright {
-    color: #9ca3af;
+    color: var(--color-footer-text);
     margin-bottom: 0.5rem;
     font-size: 0.875rem;
   }
   
   .footer__credits {
-    color: #9ca3af;
+    color: var(--color-footer-text);
     font-size: 0.875rem;
     line-height: 1.5;
   }
